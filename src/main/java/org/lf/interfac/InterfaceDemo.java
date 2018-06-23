@@ -22,12 +22,11 @@ public class InterfaceDemo {
 
 	@Test
 	public void test1() {
-		getTargetUser(personList);
+		getFilterUser(personList);
 	}
 
-
-	public List<Person> getTargetUser(List<Person> personList) {
-		List<Person> list = Lists.newArrayList();//中间结果
+	public List<Person> getFilterUser(List<Person> personList) {
+		List<Person> list = Lists.newArrayList();//中间结果,无意义
 		for (Person person : personList) {
 			if (person.getAge() > 30) {
 				list.add(person);
@@ -39,11 +38,11 @@ public class InterfaceDemo {
 	@Test
 	public void test2() {
 		Predicate<Person> predicate = t -> t.getAge() > 300;
-		System.out.println(getTargetUser(personList, predicate));
+		System.out.println(getFilterUser(personList, predicate));
 	}
 
 	//返回是空数组，不是null
-	public List<Person> getTargetUser(List<Person> personList, Predicate<Person> predicate) {
+	public List<Person> getFilterUser(List<Person> personList, Predicate<Person> predicate) {
 		return personList.stream().filter(predicate).collect(Collectors.toList());
 	}
 }
