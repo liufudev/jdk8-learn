@@ -29,6 +29,23 @@ public class Person {
 	}
 
 	@Override
+	public int hashCode() {
+		int n = 31;
+		n = n * 31 + this.name.hashCode();
+		n = n * 31 + this.age;
+		return n;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Person person = (Person) obj;
+		if (this.getName().equals(person.getName())) {
+			return true;
+		}
+		return super.equals(obj);
+	}
+
+	@Override
 	public String toString() {
 		return "Person{" + "name='" + name + '\'' + ", age='" + age + '\'' + '}';
 	}
