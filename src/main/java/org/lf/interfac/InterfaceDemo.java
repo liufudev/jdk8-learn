@@ -29,12 +29,18 @@ public class InterfaceDemo {
 	}
 
 	@Test
-	public void test1() {
+	public <T> void test1() {
+		Function<? super T, Object> keyExtractor = t ->
 		getFilterUser(personList);
 	}
 
 	@Test
 	public void test3() {
+		Function<Person, Object> keyExtractor = t -> {
+			Map<Object, Boolean> map = new ConcurrentHashMap<>();
+			return map.putIfAbsent(t, Boolean.TRUE) == null;
+		};
+		//personList.stream().filter(distinctByKey(keyExtractor));
 		personList.stream().filter(distinctByKey(Person::getName)).forEach(System.out::println);
 		//personList.stream().distinct().forEach(System.out::println);
 	}
