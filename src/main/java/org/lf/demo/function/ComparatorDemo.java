@@ -3,7 +3,6 @@ package org.lf.demo.function;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
-import org.lf.pojo.Person;
 
 import java.util.Comparator;
 import java.util.List;

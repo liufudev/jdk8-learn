@@ -3,7 +3,6 @@ package org.lf.interfac;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
-import org.lf.pojo.Person;
 
 import java.util.List;
 import java.util.Map;
