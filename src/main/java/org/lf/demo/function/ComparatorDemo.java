@@ -3,53 +3,54 @@ package org.lf.demo.function;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
+import org.lf.pojo.Man;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
 public class ComparatorDemo {
-	private List<Person> personList = Lists.newArrayList();
+	private List<Man> ManList = Lists.newArrayList();
 
 	@Before
 	public void init() {
-		personList.add(new Person("A", 20));
-		personList.add(new Person("C", 50));
-		personList.add(new Person("B", 40));
+		ManList.add(new Man("A", 20));
+		ManList.add(new Man("C", 50));
+		ManList.add(new Man("B", 40));
 	}
 
 
 	@Test
 	public void comparatorTest() {
-		Comparator<Person> comparator = Comparator.comparing(Person::getAge);
-		personList.sort(comparator);
-		personList.forEach(System.out::println);
+		Comparator<Man> comparator = Comparator.comparing(Man::getAge);
+		ManList.sort(comparator);
+		ManList.forEach(System.out::println);
 		System.out.println("##############");
-		personList.sort(comparator.reversed());
-		personList.forEach(System.out::println);
+		ManList.sort(comparator.reversed());
+		ManList.forEach(System.out::println);
 	}
 
 	@Test
 	public void test2() {
-		Function<Person, Integer> function = Person::getAge;
-		Comparator<Person> comparator = Comparator.comparing(function).reversed();
-		personList.sort(comparator);
-		personList.forEach(System.out::println);
+		Function<Man, Integer> function = Man::getAge;
+		Comparator<Man> comparator = Comparator.comparing(function).reversed();
+		ManList.sort(comparator);
+		ManList.forEach(System.out::println);
 	}
 
 	@Test
 	public void test3() {
-		Function<Person, Integer> function = Person::getAge;
-		Comparator<Person> comparator = Comparator.comparing(function);
-		personList.sort(comparator);
-		personList.forEach(System.out::println);
+		Function<Man, Integer> function = Man::getAge;
+		Comparator<Man> comparator = Comparator.comparing(function);
+		ManList.sort(comparator);
+		ManList.forEach(System.out::println);
 	}
 
 	@Test
 	public void test4() {
-		Comparator<Person> byName = new Comparator<Person>() {
+		Comparator<Man> byName = new Comparator<Man>() {
 			@Override
-			public int compare(Person o1, Person o2) {
+			public int compare(Man o1, Man o2) {
 				///	return o1.getName().compareTo(o2.getName());
 				return o1.getAge() > o2.getAge() ? 1 : -1;
 			}
@@ -58,19 +59,19 @@ public class ComparatorDemo {
 
 	@Test
 	public void test5() {
-		Function<Person, Integer> keyExtractor = Person::getAge;
+		Function<Man, Integer> keyExtractor = Man::getAge;
 		Comparator<Integer> keyComparator = Comparator.comparing(a -> -a);
-		Comparator<Person> comparator = Comparator.comparing(keyExtractor, keyComparator);
-		personList.sort(comparator);
-		personList.forEach(System.out::println);
+		Comparator<Man> comparator = Comparator.comparing(keyExtractor, keyComparator);
+		ManList.sort(comparator);
+		ManList.forEach(System.out::println);
 	}
 
 
 	@Test
 	public void test6() {
-		Comparator<Person> byName = new Comparator<Person>() {
+		Comparator<Man> byName = new Comparator<Man>() {
 			@Override
-			public int compare(Person o1, Person o2) {
+			public int compare(Man o1, Man o2) {
 				///	return o1.getName().compareTo(o2.getName());
 				return o1.getAge() > o2.getAge() ? 1 : -1;
 			}

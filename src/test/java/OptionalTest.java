@@ -35,6 +35,7 @@ public class OptionalTest {
         list1.add(9);
         list1.add(10);
         ArrayList<ArrayList<Integer>> result = Lists.newArrayList();
+        // <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
         //Function<? super T, ? extends Stream<? extends R>> mapper
         Function<List<Integer>, Stream<Integer>> mapper = a -> a.stream();
         result.stream().flatMap(mapper);
@@ -51,4 +52,6 @@ public class OptionalTest {
         list1.stream().mapToInt(mapper);
         IntSummaryStatistics intSummaryStatistics = list1.stream().mapToInt(Integer::valueOf).summaryStatistics();
     }
+
+
 }
