@@ -9,6 +9,7 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
@@ -35,10 +36,22 @@ public class OptionalTest {
         list1.add(9);
         list1.add(10);
         ArrayList<ArrayList<Integer>> result = Lists.newArrayList();
+        result.add(list1);
+        result.add(list2);
         // <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
         //Function<? super T, ? extends Stream<? extends R>> mapper
-        Function<List<Integer>, Stream<Integer>> mapper = a -> a.stream();
-        result.stream().flatMap(mapper);
+        Function<List<Integer>, Stream<Integer>> mapper = a -> {
+            //  a.add(15);
+            System.out.println("aa");
+            return a.stream();
+        };
+        result.stream().flatMap(mapper).forEach(System.out::println);
+        Predicate<Integer> predicate = a -> {
+            a = a + 10;
+            return a > 100;
+        };
+        result.stream().flatMap(a -> a.stream()).filter(predicate);
+        //System.out.println(result.stream().flatMap(mapper).mapToInt(Integer::valueOf).summaryStatistics().getMax());
     }
 
     @Test
