@@ -74,4 +74,10 @@ public class InterfaceDemo {
 
 	}
 
+	@Test
+	public void test5() {
+		Map<String, Map<Integer, String>> collect = ManList.stream()
+				.collect(Collectors.groupingBy(Man::getName, Collectors.toMap(Man::getAge, Man::getName)));
+	}
+
 }
