@@ -1,8 +1,13 @@
-package org.lf.interfac;
+package org.lf.collector;
 
 import org.lf.pojo.User;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CollectorsTest {
@@ -75,10 +80,9 @@ public class CollectorsTest {
 		System.out.println("jigeUserCount = " + jigeUserCount);
 
 		//先按照名字分组,获取每个分组分数最小的
-		Map<String, User> UserCount = userList.stream().collect(Collectors.groupingBy(User::getName, Collectors
+		Map<String, User> UserCount = userList.stream().collect(Collectors.groupingByConcurrent(User::getName, Collectors
 				.collectingAndThen(Collectors.minBy(Comparator.comparingInt(User::getScore)), Optional::get)));
 		System.out.println("UserCount = " + UserCount);
-
 
 	}
 
