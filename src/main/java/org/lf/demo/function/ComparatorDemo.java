@@ -1,6 +1,7 @@
 package org.lf.demo.function;
 
 import com.google.common.collect.Lists;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.lf.pojo.Man;
@@ -17,6 +18,7 @@ public class ComparatorDemo {
 		ManList.add(new Man("A", 20));
 		ManList.add(new Man("C", 50));
 		ManList.add(new Man("B", 40));
+		ManList.add(new Man("E", 40));
 	}
 
 
@@ -63,7 +65,8 @@ public class ComparatorDemo {
 		Comparator<Integer> keyComparator = Comparator.comparing(a -> -a);
 		Comparator<Man> comparator = Comparator.comparing(keyExtractor, keyComparator);
 		ManList.sort(comparator);
-		ManList.forEach(System.out::println);
+		ManList.stream().sorted(Comparator.comparing(Man::getAge).reversed()).forEach(System.out::print);
+		//ManList.forEach(System.out::println);
 	}
 
 
