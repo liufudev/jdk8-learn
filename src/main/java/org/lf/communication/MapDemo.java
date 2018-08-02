@@ -10,6 +10,7 @@ import org.lf.pojo.Man;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MapDemo {
@@ -29,18 +30,22 @@ public class MapDemo {
         manList.add(p2);
         manList.add(p3);
         Man p4 = new Man("c", 60);
-        manList.add(p4);
+        //manList.add(p4);
     }
 
     @Test
     public void convert1() {
         Map<String, Man> map = manList.stream().collect(Collectors.toMap(Man::getName, man -> man));
         map.forEach((k, v) -> System.out.println(v));
+        Map<String, Man> map1 = manList.stream().collect(Collectors.toMap(Man::getName, Function.identity()));
+        map1.forEach((k, v) -> System.out.println(v));
     }
 
     @Test
     public void convert2() {
-        Map<String, Man> map = manList.stream().collect(Collectors.toMap(Man::getName, man -> man, (oldValue, newValue) -> oldValue));
+        Function<? super Man, ? extends String> function1 = man -> man.getName();
+        Function<? super Man, ? extends String> function2 = Man::getName;
+        Map<String, Man> map = manList.stream().collect(Collectors.toMap(function1, man -> man, (oldValue, newValue) -> oldValue));
         map.forEach((k, v) -> System.out.println(v));
     }
 

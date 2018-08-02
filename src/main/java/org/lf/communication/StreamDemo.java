@@ -8,6 +8,7 @@ import org.lf.pojo.Man;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamDemo {
@@ -56,7 +57,8 @@ public class StreamDemo {
      */
     @Test
     public void filter() {
-        manList.stream().filter(man -> man.getAge() > 10).forEach(System.out::println);
+        Predicate<Man> predicate = man -> man.getAge() > 10;
+        manList.stream().filter(predicate.negate()).forEach(System.out::println);
     }
 
     @Test
