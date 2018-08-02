@@ -66,4 +66,10 @@ public class StreamDemo {
         System.out.println(manList.stream().anyMatch(man -> man.getAge() > 3));
         System.out.println(manList.stream().noneMatch(man -> man.getAge() > 3));
     }
+
+    @Test
+    public void removeIf() {
+        manList.removeIf(man -> man.getAge() > 10);
+        System.out.println(manList);
+    }
 }
