@@ -1,5 +1,6 @@
 package org.lf.communication;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -12,5 +13,7 @@ public class DateDemo {
         LocalDateTime localTime = LocalDateTime.ofInstant(date.toInstant(), zone);
         System.out.println(localTime.plusMinutes(60));
         System.out.println(Date.from(localTime.atZone(zone).toInstant()));
+        System.out.println(LocalDate.now().getYear());
+        System.out.println(LocalDate.now().getMonth().getValue());
     }
 }
