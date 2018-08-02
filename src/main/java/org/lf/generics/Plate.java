@@ -1,17 +1,18 @@
 package org.lf.generics;
 
 public class Plate<T> {
-	private T item;
 
-	/*public Plate(T t) {
-		item = t;
-	}*/
+    private T item;
 
-	public void set(T t) {
-		item = t;
-	}
+  /*  public Plate(T t) {
+        item = t;
+    }*/
 
-	public T get() {
-		return item;
-	}
+    public void set(T t) {
+        item = t;
+    }
+
+    public T get() {
+        return item;
+    }
 }
