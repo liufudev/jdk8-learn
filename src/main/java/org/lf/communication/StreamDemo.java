@@ -72,4 +72,10 @@ public class StreamDemo {
         manList.removeIf(man -> man.getAge() > 10);
         System.out.println(manList);
     }
+
+    @Test
+    public void parallelStream() {
+        List<Man> manList = Lists.newArrayList();
+        manList.parallelStream().forEach(man -> manList.add(man));
+    }
 }
