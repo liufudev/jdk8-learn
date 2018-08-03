@@ -5,17 +5,16 @@ import org.junit.Test;
 public class InterfaceAImpl implements InterfaceA, InterfaceB {
 
 
-	public void call() {
-		foo();
-	}
 
 	@Test
 	public void test() {
-		call();
-	}
+        foo();
+        //InterfaceA.super.foo();
+    }
+
 
 	@Override
 	public void foo() {
-		InterfaceA.super.foo();
+        System.out.println("InterfaceAImpl");
 	}
 }

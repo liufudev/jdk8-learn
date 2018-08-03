@@ -5,7 +5,7 @@ public interface InterfaceA {
 		System.out.println("InterfaceA foo");
 	}
 
-	default void foo1() {
-		System.out.println("InterfaceA foo1");
-	}
+    default void foo1() {
+        System.out.println("InterfaceA foo1");
+    }
 }
