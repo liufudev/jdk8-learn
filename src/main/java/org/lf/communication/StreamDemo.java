@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamDemo {
 
@@ -28,7 +29,7 @@ public class StreamDemo {
     }
 
     /**
-     * 代替subsubList
+     * 可代替subList
      */
     @Test
     public void skipAndLimit() {
@@ -77,5 +78,12 @@ public class StreamDemo {
     public void parallelStream() {
         List<Man> manList = Lists.newArrayList();
         manList.parallelStream().forEach(man -> manList.add(man));
+    }
+
+    @Test
+    public void repeatConsumer() {
+        Stream<Man> stream = manList.stream();
+        stream.filter(a -> a.getName().length() > 2);
+        stream.forEach(System.out::println);
     }
 }
